@@ -1,0 +1,465 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <!-- <ion-title>
+      Menus
+    </ion-title> -->
+  </ion-navbar>
+
+  <ion-menu [content]="content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <button ion-item (click)="personalPage()">
+          Informacion Personal
+        </button>
+        <button ion-item (click)="permisosPage()">
+          Permisos
+        </button>
+      <!----- <<<<<poniendo>
+
+    <button ion-button (click)="signIn()" item-left>Registrarse</button>
+    <button ion-button (click)="register()" item-left>Registro</button>
+
+      </kjkkk  > -->
+
+        <button ion-item (click)="juegoPage()">
+          Juegos
+        </button>
+        <button ion-item (click)="historialPage()">
+          Historial
+        </button>
+
+        <button ion-item (click)="jugadoresPage()">
+          Jugadores
+        </button>
+
+        <button ion-item (click)="closeMenu()">
+          Calificaciones
+        </button>
+
+        <button ion-item (click)="openPage(homePage)">
+          Configuraciones
+        </button>
+
+        <button ion-item (click)="openPage(homePage)">
+          Bloquear
+        </button>
+
+         <button ion-item (click)="openPage(homePage)">
+          Cerrar Sesion
+        </button>
+
+
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <ion-nav id="nav" #content [root]="rootPage"></ion-nav>
+
+      <ion-tabs class="tabs-basic">
+        <ion-tab tabTitle="Music" [root]="rootPage"></ion-tab>
+        <ion-tab tabTitle="Movies" [root]="rootPage"></ion-tab>
+        <ion-tab tabTitle="Games" [root]="rootPage"></ion-tab>
+      </ion-tabs>
+
+
+
+  <ion-content padding>
+
+
+         <div [ngClass]="grabando? 'activomemoria':'inactivo'" ></div>
+         <div class='todo'>
+              <div class='grid-container'>
+
+                <div>
+
+
+                      <button *ngIf='!grabando' ion-button full (click)='memoria()' item-end icon-end>
+                        MEMORIA
+                      </button>
+
+                       <button *ngIf='grabando' color='danger' ion-button full (click)='parar()' item-end icon-end>
+                        MEMORIA
+                      </button>
+
+                      <button *ngIf='!activoarea' ion-button full (click)='area()' item-end icon-end>
+                        AREA
+                      </button>
+
+                       <button *ngIf='activoarea' color='danger' ion-button full (click)='parararea()' item-end icon-end>
+                        AREA
+                      </button>
+
+
+                      <button *ngIf='!activasecuencia' ion-button full (click)='secuencia()' item-end icon-end>
+                        SECUENCIA
+                      </button>
+
+                       <button *ngIf='activasecuencia' color='danger' ion-button full (click)='parasecuencia()' item-end icon-end>
+                        SECUENCIA
+                      </button>
+
+
+                    <button ion-button full (click)='aleatorio()' >ALEATORIO</button>
+                    <button ion-button full (click)='tiroraso()' >TIRO RASO</button>
+                    <button ion-button full (click)='intermitente' >INTERMITENTE</button>
+                    <button ion-button full (click)='iniciofin()' >PLAY</button>
+
+                </div>
+                <div class='arco_horizontal'>
+
+
+
+
+
+                    <div class='A1' [ngClass]="A1? 'primerarco':'nocompleto'" (mouseover)="selecciona('A1')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','A1')">A1</div>
+
+                    <div class='A2' [ngClass]="A2? 'primerarco':'nocompleto'"  (mouseover)="selecciona('A2')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','A2')">A2</div>
+                    <div class='A3' [ngClass]="A3? 'primerarco':'nocompleto'"  (mouseover)="selecciona('A3')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','A3')">A3</div>
+                    <div class='A4' [ngClass]="A4? 'primerarco':'nocompleto'"  (mouseover)="selecciona('A4')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','A4')">A4</div>
+                    <div class='A5' [ngClass]="A5? 'primerarco':'nocompleto'"  (mouseover)="selecciona('A5')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','A5')">A5</div>
+                    <div class='A6' [ngClass]="A6? 'primerarco':'nocompleto'"  (mouseover)="selecciona('A6')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','A6')">A6</div>
+                    <div class='A7' [ngClass]="A7? 'primerarco':'nocompleto'"  (mouseover)="selecciona('A7')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','A7')">A7</div>
+                    <div class='A8' [ngClass]="A8? 'primerarco':'nocompleto'"  (mouseover)="selecciona('A8')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','A8')">A8</div>
+
+                    <div class='B1' [ngClass]="B1? 'primerarco':'nocompleto'"  (mouseover)="selecciona('B1')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','B1')">B1</div>
+
+                    <div class='B2' [ngClass]="B2? 'segundoarco':'nocompleto'"  (mouseover)="selecciona('B2')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','B2')">B2</div>
+
+                    <div class='B3' [ngClass]="B3? 'segundoarco':'nocompleto'"  (mouseover)="selecciona('B3')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','B3')">B3</div>
+
+                    <div class='B4' [ngClass]="B4? 'segundoarco':'nocompleto'"  (mouseover)="selecciona('B4')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','B4')">B4</div>
+
+                    <div class='B5' [ngClass]="B5? 'segundoarco':'nocompleto'"  (mouseover)="selecciona('B5')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','B5')">B5</div>
+
+                    <div class='B6' [ngClass]="B6? 'segundoarco':'nocompleto'"  (mouseover)="selecciona('B6')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','B6')">B6</div>
+
+                    <div class='B7' [ngClass]="B7? 'segundoarco':'nocompleto'"  (mouseover)="selecciona('B7')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','B7')">B7</div>
+
+                    <div class='B8' [ngClass]="B8? 'segundoarco':'nocompleto'"  (mouseover)="selecciona('B8')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','B8')">B8</div>
+
+
+
+                    <div class='C1' [ngClass]="C1? 'primerarco':'nocompleto'"  (mouseover)="selecciona('C1')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','C1')">C1</div>
+
+                    <div class='C2' [ngClass]="C2? 'segundoarco':'nocompleto'"  (mouseover)="selecciona('C2')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','C2')">C2</div>
+
+                    <div class='C3' [ngClass]="C3? 'tercerarco':'nocompleto'"  (mouseover)="selecciona('C3')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','C3')">C3</div>
+
+                    <div class='C4' [ngClass]="C4? 'tercerarco':'nocompleto'"  (mouseover)="selecciona('C4')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','C4')">C4</div>
+
+
+                    <div class='C5' [ngClass]="C5? 'tercerarco':'nocompleto'"  (mouseover)="selecciona('C5')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','C5')">C5</div>
+
+                    <div class='C6' [ngClass]="C6? 'tercerarco':'nocompleto'"  (mouseover)="selecciona('C6')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','C6')">C6</div>
+
+                    <div class='C7' [ngClass]="C7? 'tercerarco':'nocompleto'"  (mouseover)="selecciona('C7')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','C7')">C7</div>
+
+
+                    <div class='C8' [ngClass]="C8? 'tercerarco':'nocompleto'"  (mouseover)="selecciona('C8')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','C8')">C8</div>
+
+
+
+
+
+
+
+                          <div class='D1' [ngClass]="D1? 'primerarco':'nocompleto'"  (mouseover)="selecciona('D1')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','D1')">D1</div>
+
+                          <div class='D2' [ngClass]="D2? 'segundoarco':'nocompleto'"  (mouseover)="selecciona('D2')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','D2')">D2</div>
+
+                          <div class='D3' [ngClass]="D3? 'tercerarco':'nocompleto'"  (mouseover)="selecciona('D3')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','D3')">D3</div>
+
+                          <div class='D4' [ngClass]="D4? 'cuartoarco':'nocompleto'"  (mouseover)="selecciona('D4')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','D4')">D4</div>
+
+
+                          <div class='D5' [ngClass]="D5? 'cuartoarco':'nocompleto'"  (mouseover)="selecciona('D5')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','D5')">D5</div>
+
+
+                          <div class='D6' [ngClass]="D6? 'cuartoarco':'nocompleto'"  (mouseover)="selecciona('D6')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','D6')">D6</div>
+
+                          <div class='D7' [ngClass]="D7? 'cuartoarco':'nocompleto'"  (mouseover)="selecciona('D7')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','D7')">D7</div>
+
+
+                          <div class='D8' [ngClass]="D8? 'cuartoarco':'nocompleto'"  (mouseover)="selecciona('D8')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','D8')">D8</div>
+
+
+
+
+
+                          <div class='E1' [ngClass]="E1? 'primerarco':'nocompleto'"  (mouseover)="selecciona('E1')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','E1')">E1</div>
+
+                          <div class='E2' [ngClass]="E2? 'segundoarco':'nocompleto'"  (mouseover)="selecciona('E2')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','E2')">E2</div>
+
+                          <div class='E3' [ngClass]="E3? 'tercerarco':'nocompleto'"  (mouseover)="selecciona('E3')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','E3')">E3</div>
+
+                          <div class='E4' [ngClass]="E4? 'cuartoarco':'nocompleto'"  (mouseover)="selecciona('E4')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','E4')"> E4</div>
+
+
+
+                          <div class='F1' [ngClass]="F1? 'primerarco':'nocompleto'"  (mouseover)="selecciona('F1')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','F1')">F1</div>
+
+                          <div class='F2' [ngClass]="F2? 'segundoarco':'nocompleto'"  (mouseover)="selecciona('F2')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','F2')">F2</div>
+
+                          <div class='F3' [ngClass]="F3? 'tercerarco':'nocompleto'"  (mouseover)="selecciona('F3')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','F3')">F3</div>
+
+                          <div class='F4' [ngClass]="F4? 'cuartoarco':'nocompleto'"  (mouseover)="selecciona('F4')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','F4')">F4</div>
+
+
+                          <div class='G1' [ngClass]="G1? 'primerarco':'nocompleto'"  (mouseover)="selecciona('G1')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','G1')">G1</div>
+
+                          <div class='G2' [ngClass]="G2? 'segundoarco':'nocompleto'"  (mouseover)="selecciona('G2')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','G2')">G2</div>
+
+                          <div class='G3' [ngClass]="G3? 'tercerarco':'nocompleto'"  (mouseover)="selecciona('G3')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','G3')">G3</div>
+
+                          <div class='G4' [ngClass]="G4? 'cuartoarco':'nocompleto'"  (mouseover)="selecciona('G4')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','G4')">G4</div>
+
+
+
+
+                          <div class='H1' [ngClass]="H1? 'primerarco':'nocompleto'"  (mouseover)="selecciona('H1')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','H1')">H1</div>
+
+                          <div class='H2' [ngClass]="H2? 'segundoarco':'nocompleto'"  (mouseover)="selecciona('H2')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','H2')">H2</div>
+
+                          <div class='H3' [ngClass]="H3? 'tercerarco':'nocompleto'"  (mouseover)="selecciona('H3')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','H3')">H3</div>
+
+                          <div class='H4' [ngClass]="H4? 'cuartoarco':'nocompleto'"  (mouseover)="selecciona('H4')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','H4')">H4</div>
+
+
+                    <div class='I1' [ngClass]="I1? 'primerarco':'nocompleto'"  (mouseover)="selecciona('I1')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','I1')">I1</div>
+
+                          <div class='I2' [ngClass]="I2? 'segundoarco':'nocompleto'"  (mouseover)="selecciona('I2')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','I2')">I2</div>
+
+                          <div class='I3' [ngClass]="I3? 'tercerarco':'nocompleto'"  (mouseover)="selecciona('I3')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','I3')">I3</div>
+
+                          <div class='I4' [ngClass]="I4? 'cuartoarco':'nocompleto'"  (mouseover)="selecciona('I4')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','I4')">I4</div>
+
+
+                    <div class='J1' [ngClass]="J1? 'primerarco':'nocompleto'"  (mouseover)="selecciona('J1')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','J1')">J1</div>
+
+                          <div class='J2' [ngClass]="J2? 'segundoarco':'nocompleto'"  (mouseover)="selecciona('J2')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','J2')">J2</div>
+
+                          <div class='J3' [ngClass]="J3? 'tercerarco':'nocompleto'"  (mouseover)="selecciona('J3')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','J3')">J3</div>
+
+                          <div class='J4' [ngClass]="J4? 'cuartoarco':'nocompleto'"  (mouseover)="selecciona('J4')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','J4')">J4</div>
+
+
+
+                    <div class='K1' [ngClass]="K1? 'primerarco':'nocompleto'"  (mouseover)="selecciona('K1')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','K1')">K1</div>
+
+                          <div class='K2' [ngClass]="K2? 'segundoarco':'nocompleto'"  (mouseover)="selecciona('K2')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','K2')">K2</div>
+
+                          <div class='K3' [ngClass]="K3? 'tercerarco':'nocompleto'"  (mouseover)="selecciona('K3')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','K3')">K3</div>
+
+                          <div class='K4' [ngClass]="K4? 'cuartoarco':'nocompleto'"  (mouseover)="selecciona('K4')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','K4')">K4</div>
+
+                          <div class='L1' [ngClass]="L1? 'primerarco':'nocompleto'"  (mouseover)="selecciona('L1')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','L1')">L1</div>
+
+                          <div class='L2' [ngClass]="L2? 'segundoarco':'nocompleto'"  (mouseover)="selecciona('L2')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','L2')">L2</div>
+
+                          <div class='L3' [ngClass]="L3? 'tercerarco':'nocompleto'"  (mouseover)="selecciona('L3')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','L3')">M3</div>
+                          <div class='L4' [ngClass]="L4? 'cuartoarco':'nocompleto'"  (mouseover)="selecciona('L4')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','L4')">L4</div>
+
+
+
+                      <div class='M1' [ngClass]="M1? 'primerarco':'nocompleto'"  (mouseover)="selecciona('M1')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','M1')">M1</div>
+
+                          <div class='M2' [ngClass]="M2? 'segundoarco':'nocompleto'"  (mouseover)="selecciona('M2')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','M2')">M2</div>
+
+                          <div class='M3' [ngClass]="M3? 'tercerarco':'nocompleto'"  (mouseover)="selecciona('M3')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','M3')">M3</div>
+
+                          <div class='M4' [ngClass]="M4? 'cuartoarco':'nocompleto'"  (mouseover)="selecciona('M4')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','M4')">M4</div>
+
+
+
+                          <div class='N1' [ngClass]="N1? 'primerarco':'nocompleto'"  (mouseover)="selecciona('N1')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','N1')">N1</div>
+
+                          <div class='N2' [ngClass]="N2? 'segundoarco':'nocompleto'"  (mouseover)="selecciona('N2')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','N2')">N2</div>
+
+                          <div class='N3' [ngClass]="N3? 'tercerarco':'nocompleto'"  (mouseover)="selecciona('N3')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','N3')">N3</div>
+
+                          <div class='N4' [ngClass]="N4? 'cuartoarco':'nocompleto'"  (mouseover)="selecciona('N4')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','N4')">N4</div>
+
+
+                          <div class='NN1' [ngClass]="NN1? 'primerarco':'nocompleto'"  (mouseover)="selecciona('NN1')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','NN1')">NN1</div>
+
+                          <div class='NN2' [ngClass]="NN2? 'segundoarco':'nocompleto'"  (mouseover)="selecciona('NN2')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','NN2')">NN2</div>
+
+                          <div class='NN3' [ngClass]="NN3? 'tercerarco':'nocompleto'"  (mouseover)="selecciona('NN3')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','NN3')">NN3</div>
+
+                          <div class='NN4' [ngClass]="NN4? 'cuartoarco':'nocompleto'"  (mouseover)="selecciona('NN4')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','NN4')">NN4</div>
+
+
+                          <div class='O1' [ngClass]="O1? 'primerarco':'nocompleto'"  (mouseover)="selecciona('O1')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','O1')">O1</div>
+
+                          <div class='O2' [ngClass]="O2? 'segundoarco':'nocompleto'"  (mouseover)="selecciona('O2')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','O2')">O2</div>
+
+                          <div class='O3' [ngClass]="O3? 'tercerarco':'nocompleto'"  (mouseover)="selecciona('O3')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','O3')">O3</div>
+
+                          <div class='O4' [ngClass]="O4? 'cuartoarco':'nocompleto'"  (mouseover)="selecciona('O4')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','O4')">O4</div>
+
+
+
+
+                    <div class='P1' [ngClass]="P1? 'primerarco':'nocompleto'"  (mouseover)="selecciona('P1')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','P1')">P1</div>
+
+                          <div class='P2' [ngClass]="P2? 'segundoarco':'nocompleto'"  (mouseover)="selecciona('P2')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','P2')">P2</div>
+
+                          <div class='P3' [ngClass]="P3? 'tercerarco':'nocompleto'"  (mouseover)="selecciona('P3')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','P3')">P3</div>
+
+                          <div class='P4' [ngClass]="P4? 'cuartoarco':'nocompleto'"  (mouseover)="selecciona('P4')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','P4')">P4</div>
+
+
+                          <div class='Q1' [ngClass]="Q1? 'primerarco':'nocompleto'"  (mouseover)="selecciona('Q1')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','Q1')">Q1</div>
+
+                          <div class='Q2' [ngClass]="Q2? 'segundoarco':'nocompleto'"  (mouseover)="selecciona('Q2')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','Q2')">Q2</div>
+
+                          <div class='Q3' [ngClass]="P3? 'tercerarco':'nocompleto'"  (mouseover)="selecciona('Q3')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','Q3')">Q3</div>
+
+                          <div class='Q4' [ngClass]="Q4? 'cuartoarco':'nocompleto'"  (mouseover)="selecciona('Q4')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','Q4')">Q4</div>
+
+
+                     <div class='R1' [ngClass]="R1? 'primerarco':'nocompleto'"  (mouseover)="selecciona('R1')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','R1')">R1</div>
+
+                          <div class='R2' [ngClass]="R2? 'segundoarco':'nocompleto'"  (mouseover)="selecciona('R2')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','R2')">R2</div>
+
+                          <div class='R3' [ngClass]="R3? 'tercerarco':'nocompleto'"  (mouseover)="selecciona('R3')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','R3')">R3</div>
+
+                          <div class='R4' [ngClass]="R4? 'cuartoarco':'nocompleto'"  (mouseover)="selecciona('R4')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','R4')">R4</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                          <div class='S1' [ngClass]="S1? 'primerarco':'nocompleto'"  (mouseover)="selecciona('S1')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','S1')">S1</div>
+
+                          <div class='S2' [ngClass]="S2? 'segundoarco':'nocompleto'"  (mouseover)="selecciona('S2')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','S2')">S2</div>
+
+                          <div class='S3' [ngClass]="S3? 'tercerarco':'nocompleto'"  (mouseover)="selecciona('S3')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','S3')">S3</div>
+
+                          <div class='S4' [ngClass]="S4? 'cuartoarco':'nocompleto'"  (mouseover)="selecciona('S4')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','S4')">S4</div>
+
+                          <div class='S5' [ngClass]="S5? 'cuartoarco':'nocompleto'"  (mouseover)="selecciona('S5')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','S5')">S5</div>
+
+                          <div class='S6' [ngClass]="S6? 'cuartoarco':'nocompleto'"  (mouseover)="selecciona('S6')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','S6')">S6</div>
+                          <div class='S7' [ngClass]="S7? 'cuartoarco':'nocompleto'"  (mouseover)="selecciona('S7')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','S7')">S7</div>
+                          <div class='S8' [ngClass]="S8? 'cuartoarco':'nocompleto'"  (mouseover)="selecciona('S8')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','S8')">S8</div>
+
+
+
+
+
+
+                    <div class='T1' [ngClass]="T1? 'primerarco':'nocompleto'"  (mouseover)="selecciona('T1')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','T1')">T1</div>
+
+                    <div class='T2' [ngClass]="T2? 'segundoarco':'nocompleto'"  (mouseover)="selecciona('T2')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','T2')">T2</div>
+
+                    <div class='T3' [ngClass]="T3? 'tercerarco':'nocompleto'"  (mouseover)="selecciona('T3')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','T3')">T3</div>
+
+                    <div class='T4' [ngClass]="T4? 'tercerarco':'nocompleto'"  (mouseover)="selecciona('T4')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','T4')">T4</div>
+
+                    <div class='T5' [ngClass]="T5? 'tercerarco':'nocompleto'"  (mouseover)="selecciona('T5')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','T5')">T5</div>
+
+                    <div class='T6' [ngClass]="T6? 'tercerarco':'nocompleto'"  (mouseover)="selecciona('T6')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','T6')">T6</div>
+
+                    <div class='T7' [ngClass]="T7? 'tercerarco':'nocompleto'"  (mouseover)="selecciona('T7')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','T7')">T7</div>
+
+                    <div class='T8' [ngClass]="T8? 'tercerarco':'nocompleto'"  (mouseover)="selecciona('T8')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','T8')">T8</div>
+
+
+                    <div class='U1' [ngClass]="U1? 'primerarco':'nocompleto'"  (mouseover)="selecciona('U1')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','U1')">U1</div>
+
+                    <div class='U2' [ngClass]="U2? 'segundoarco':'nocompleto'"  (mouseover)="selecciona('U2')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','U2')">U2</div>
+
+                    <div class='U3' [ngClass]="U3? 'segundoarco':'nocompleto'"  (mouseover)="selecciona('U3')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','U3')">U3</div>
+
+                    <div class='U4' [ngClass]="U4? 'segundoarco':'nocompleto'"  (mouseover)="selecciona('U4')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','U4')">U4</div>
+
+                    <div class='U5' [ngClass]="U5? 'segundoarco':'nocompleto'"  (mouseover)="selecciona('U5')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','U5')">U5</div>
+
+                    <div class='U6' [ngClass]="U6? 'segundoarco':'nocompleto'"  (mouseover)="selecciona('U6')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','U6')">U6</div>
+
+                    <div class='U7' [ngClass]="U7? 'segundoarco':'nocompleto'"  (mouseover)="selecciona('U7')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','U7')">U7</div>
+
+                    <div class='U8' [ngClass]="U8? 'segundoarco':'nocompleto'"  (mouseover)="selecciona('U8')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','U8')">U8</div>
+
+
+
+
+                    <div class='V1' [ngClass]="V1? 'primerarco':'nocompleto'" (mouseover)="selecciona('V1')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','V1')">V1</div>
+
+                    <div class='V2' [ngClass]="V2? 'primerarco':'nocompleto'"  (mouseover)="selecciona('V2')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','V2')">V2</div>
+                    <div class='V3' [ngClass]="V3? 'primerarco':'nocompleto'"  (mouseover)="selecciona('V3')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','V3')">V3</div>
+                    <div class='V4' [ngClass]="V4? 'primerarco':'nocompleto'"  (mouseover)="selecciona('V4')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','V4')">V4</div>
+                    <div class='V5' [ngClass]="V5? 'primerarco':'nocompleto'"  (mouseover)="selecciona('V5')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','V5')">V5</div>
+                    <div class='V6' [ngClass]="V6? 'primerarco':'nocompleto'"  (mouseover)="selecciona('V6')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','V6')">V6</div>
+                    <div class='V7' [ngClass]="V7? 'primerarco':'nocompleto'"  (mouseover)="selecciona('V7')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','V7')">V7</div>
+                    <div class='V8' [ngClass]="V8? 'primerarco':'nocompleto'"  (mouseover)="selecciona('V8')" (mouseup)="finaliza('Finaliza')" (mousedown)="inicia('Inicia','V8')">V8</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+
+                <div class='circulos'>
+
+
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+
+
+
+              </div>
+
+              </div>
+
+            </div>
+
+
+
+
+  <div class='dd' (move)="somethingMoved($event)"></div>
+
+
+    <!--<button ion-button clear block (click)="getCurrentScreen0rientation()">Get orientations</button>
+
+    <button ion-button clear block (click)="lockScreen0rientation()">lockLandscape</button>
+
+    <button ion-button clear block (click)="unlockScreen0rientation()">unlockLandscape</button>
+
+
+    <button ion-button clear block (click)="observeScreen0rientation()">observeScreen0rientation</button>-->
+
+  </ion-content>
