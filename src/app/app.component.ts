@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
-import { StatusBar } from '@ionic-native/status-bar';
 import { Storage } from '@ionic/storage';
 import {IonicStorageModule} from '@ionic/storage';
 import { MyApp } from './app.component';
