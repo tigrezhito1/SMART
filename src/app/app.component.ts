@@ -3,8 +3,22 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { StatusBar } from '@ionic-native/status-bar';
+import { Storage } from '@ionic/storage';
+import {IonicStorageModule} from '@ionic/storage';
+import { MyApp } from './app.component';
+import { HomePage } from '../pages/home/home';
+import { HistorialPage } from '../pages/historial/historial';
+
+import { JuegoPage } from '../pages/juego/juego';
+import { JugadoresPage } from '../pages/jugadores/jugadores';
+
+import { PermisosPage } from '../pages/permisos/permisos';
+
+import { PersonalPage } from '../pages/personal/personal';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
+
 
 @Component({
   templateUrl: 'app.html'
